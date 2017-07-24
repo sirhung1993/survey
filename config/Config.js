@@ -13,7 +13,12 @@ try {
 module.exports = class Config {
   constructor (DEVorPro) {
     if (DEVorPro === 'DEV' || productionConfigDoesNotExist) {
-
+    	this.dbconnectionLimit = 5
+    	this.mysqlHost = "localhost"
+    	this.dbUsername = "innovation_survey"
+    	this.dbDatabasename = "innovation_survey"
+    	this.surveyTable = "surveyData",
+    	this.dbPassword = "innovation"
       
     } else if (DEVorPro === 'PRO' || productionConfigDoesNotExist === undefined) {
       //  For specific purpose configurations - write the content below in ~/config/ProConfig.js/ It will replace all the default configurations.

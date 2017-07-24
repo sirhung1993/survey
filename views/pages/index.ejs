@@ -5,8 +5,19 @@
 </head>
 <body>
 
-  <div class="w3-container w3-blue">
-    <h1>Survey of Innovation </h1>
+  <div class="w3-container w3-blue w3-row">
+    <div class="w3-col" style="width: 40%;">
+      <h1>Survey of Innovation </h1>
+    </div>
+    <div class="w3-col" style="width: 40%;">
+      <p> </p>
+    </div>
+    <div class="w3-col" style="width: 20%;">
+      <select class="w3-small w3-black w3-text-white w3-col FwhenS" id="lang" onchange="SelectLanguage()">
+        <option value="vi">Tiếng Việt</option>
+        <option value="en">English</option>
+      </select>       
+    </div>
   </div>
   <br>
   <br>
@@ -17,7 +28,7 @@
   <div class="w3-row">
     <div class="w3-col" style="width: 10%;"><p> </p></div>
     
-    <div class="w3-col w3-row" style="width: 80%">
+    <div class="w3-col w3-row" style="width: 80%" id="questionSector">
 
       <div class="w3-border-bottom w3-row">
         <div class="w3-col w3-twothird">
@@ -26,12 +37,12 @@
 
         <div class="w3-col w3-third"> 
           <label>
-            <input class="w3-radio w3-border" type="radio" name="q1" value="yes">
+            <input class="w3-radio w3-border" type="radio" name="question-1" value="yes">
           Yes
           </label>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           <label>
-            <input class="w3-radio w3-border" type="radio" name="q1" value="no">
+            <input class="w3-radio w3-border" type="radio" name="question-1" value="no">
           No
           </label> 
         </div>
@@ -46,12 +57,12 @@
 
         <div class="w3-col w3-third"> 
           <label>
-            <input class="w3-radio w3-border" type="radio" name="q2" value="yes">
+            <input class="w3-radio w3-border" type="radio" name="question-2" value="yes">
           Yes
           </label>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
           <label>
-            <input class="w3-radio w3-border" type="radio" name="q2" value="no">
+            <input class="w3-radio w3-border" type="radio" name="question-2" value="no">
           No
           </label> 
         </div>
@@ -65,7 +76,7 @@
         </div>
 
         <div class="w3-col w3-third"> 
-          <select class="w3-select" name="q3">
+          <select class="w3-select" name="question-3">
             <option value="Innovation Hour">Innovation Hour</option>
             <option value="Inno-Storm">Inno-Storm</option>
             <option value="Bike-Grapher">Bike-Grapher</option>
@@ -75,21 +86,28 @@
         <br> 
         <br>
       </div>
+      <br>
+
       <div class="w3-border-bottom w3-row">
         <div class="w3-col w3-twothird">
-          <label class="w3-xlarge">4. In your point of view, is Innovation Hour helpful for you? If no, please let us know which points should be improved? </label>
+          <label class="w3-xlarge">4. In your point of view, is Innovation Hour helpful for you? </label>
         </div>
 
         <div class="w3-col w3-third"> 
-          <label>
-            <input class="w3-radio w3-border" type="radio" name="q4" value="yes">
+          <label onclick='$("#q4-bonus").hide()'>
+            <input class="w3-radio w3-border" type="radio" name="question-4" value="yes">
           Yes
           </label>
           &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-          <label>
-            <input class="w3-radio w3-border" type="radio" name="q4" value="no">
+          <label onclick='$("#q4-bonus").show()'>
+            <input class="w3-radio w3-border" type="radio" name="question-4" value="no">
           No
-          </label> 
+          </label>
+          <br> 
+          <label id="q4-bonus" style="display: none;">
+            If no, please let us know which points should be improved?
+            <textarea type="text" name="question-4-1" class="w3-input w3-border" style="height: 100px;" onclick='$(this).val("")' placeholder="Your opinion..."></textarea>
+          </label>
         </div>
                    
       </div>
@@ -101,18 +119,22 @@
         </div>
 
         <div class="w3-col w3-third"> 
-            <textarea placeholder="Type here..." rows="5"  cols="20" name="q5">
-
-            </textarea>
+            <textarea placeholder="Type here..." name="question-5" onclick='$(this).val("")' cols=30 rows=5></textarea>
         </div>
                    
       </div>
-      <br>
-      <br>      
+      <br>     
+    
+      <button class="w3-button w3-blue w3-block w3-xxlarge w3-hover-yellow" onclick="submitSurvey()" style="width: 100%">
+      Submit
+      </button>
     </div>
 
     <div class="w3-col" style="width: 10%;"> <p> </p></div>
   </div>
+
+
+
   <br>
   <br>
   <br>

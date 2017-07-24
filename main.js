@@ -4,6 +4,8 @@ const bodyParser = require('body-parser')
 const form = require('multer')()
 const app = express()
 
+const DB = require('./model/database.js')
+const db = new DB()
 const Config = require('./config/Config.js')
 const config = new Config()
 
@@ -22,6 +24,17 @@ app.get('/', function (req, res, next) {
 app.get('/about', function (req, res, next) {
   // console.log("https://" + req.hostname + req.url)
   res.render('pages/about')
+})
+
+app.post('/submit' , (req, res, next) => {
+	var answers = req.body['answers[]']
+	console.log(answers)
+	db.insertASurvey(answers).then((success) => {
+		res.status(200).json({OK: {msg: 'Insert suscessfully! ' + success}})
+	})
+	.catch((err) => {
+		res.status(502).json({err: {msg: "Internal server error!"}})
+	})
 })
 
 app.get('(error_page|*)' , function ( req , res , next) {
