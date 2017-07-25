@@ -8,3 +8,14 @@ CREATE TABLE surveyData (
 	q5 text,
 	PRIMARY KEY(id)
 );
+
+CREATE TABLE countSurveyView (
+	id int NOT NULL AUTO_INCREMENT,
+	element varchar(50),
+	count int NOT NULL,
+	PRIMARY KEY(id)
+);
+
+INSERT INTO countSurveyView (element, count) VALUES ('surveyView', 1);
+
+UPDATE countSurveyView SET count = count + 1 WHERE element = 'surveyView';

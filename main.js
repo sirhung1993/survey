@@ -26,6 +26,15 @@ app.get('/about', function (req, res, next) {
   res.render('pages/about')
 })
 
+app.get('/countSurveyView', (req, res, next) => {
+	db.countSurveyView().then((success) => {
+		res.status(200).json({OK: {msg : success}})
+	})
+	.catch((err) => {
+		res.status(200).json({err: {msg: "Internal server err!"}})
+	})
+})
+
 app.post('/submit' , (req, res, next) => {
 	var answers = req.body['answers[]']
 	console.log(answers)
@@ -33,8 +42,12 @@ app.post('/submit' , (req, res, next) => {
 		res.status(200).json({OK: {msg: 'Insert suscessfully! ' + success}})
 	})
 	.catch((err) => {
-		res.status(502).json({err: {msg: "Internal server error!"}})
+		res.status(200).json({err: {msg: "Internal server error!"}})
 	})
+})
+
+app.get('/thank' , function ( req , res , next) {
+    res.status(200).render ('pages/thank')
 })
 
 app.get('(error_page|*)' , function ( req , res , next) {

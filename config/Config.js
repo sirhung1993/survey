@@ -18,6 +18,7 @@ module.exports = class Config {
     	this.dbUsername = "innovation_survey"
     	this.dbDatabasename = "innovation_survey"
     	this.surveyTable = "surveyData",
+    	this.countTable = "countSurveyView",
     	this.dbPassword = "innovation"
       
     } else if (DEVorPro === 'PRO' || productionConfigDoesNotExist === undefined) {

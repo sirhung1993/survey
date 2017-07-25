@@ -18,6 +18,8 @@ module.exports = class Database {
         password: config.dbPassword,
         database: config.dbDatabasename
       });
+      this.countTable = "countSurveyView"
+      this.surveyView = "surveyView"
     }
 /*
 * connect to database and return a promis with connection
@@ -30,6 +32,7 @@ module.exports = class Database {
         if (!err) {
           resolve(connection)
         } else {
+          console.error(err)
           reject(err)
         }
       })
@@ -66,6 +69,27 @@ module.exports = class Database {
       })
       .catch((err) => {
         console.error(err)
+        reject(err)
+      })
+    })
+  }
+
+  countSurveyView() {
+    return new Promise ((resolve, reject) => {
+      this.connectDB().then((connection) => {
+        connection.query("UPDATE " + this.countTable + 
+          " SET count = count + 1 WHERE element = ?", 
+          this.surveyView,
+          (err, results, fields) => {
+            if (!err) {
+              resolve("Increase survey view successfully!")
+            } else {
+              console.error(err)
+              reject("Cannot increase survey view due to internal error!")
+            }
+          })
+      })
+      .catch((err) => {
         reject(err)
       })
     })

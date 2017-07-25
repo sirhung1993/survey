@@ -12,12 +12,6 @@
     <div class="w3-col" style="width: 40%;">
       <p> </p>
     </div>
-    <div class="w3-col" style="width: 20%;">
-      <select class="w3-small w3-black w3-text-white w3-col FwhenS" id="lang" onchange="SelectLanguage()">
-        <option value="vi">Tiếng Việt</option>
-        <option value="en">English</option>
-      </select>       
-    </div>
   </div>
   <br>
   <br>
@@ -133,7 +127,43 @@
     <div class="w3-col" style="width: 10%;"> <p> </p></div>
   </div>
 
+  <div id="success-display" class="w3-modal" style="display: none;">
+    <div class="w3-modal-content w3-row">
+      <header class="w3-container w3-teal"> 
+        <span onclick='$("#success-display").hide()' 
+        class="w3-button w3-display-topright w3-xxlarge w3-hover-black">&times;</span>
+      </header>
+        <h2 class="w3-green">Modal Header</h2>
 
+    </div>
+    <div class="w3-col" style="width: 10%;">
+      <p> </p>
+    </div>
+      <button onclick='$("#success-display").hide(window.location.replace("thank"))' class="w3-button w3-blue w3-hover-yellow w3-col" style="width: 50%">OK</button>
+
+      <div class="w3-col" style="width: 10%;">
+      <p> </p>
+    </div>
+  </div>
+
+<div id="error-display" class="w3-modal" style="display: none;">
+    <div class="w3-modal-content w3-row">
+      <header class="w3-container w3-red"> 
+        <span onclick='$("#error-display").hide()' 
+        class="w3-button w3-display-topright">&times;</span>
+      </header>
+        <h2 class="w3-red">Modal Header</h2>
+
+    </div>
+    <div class="w3-col" style="width: 10%;">
+      <p> </p>
+    </div>
+      <button onclick='$("#error-display").hide()' class="w3-button w3-blue w3-hover-yellow w3-col" style="width: 50%">OK</button>
+
+      <div class="w3-col" style="width: 10%;">
+      <p> </p>
+    </div>
+  </div>
 
   <br>
   <br>
